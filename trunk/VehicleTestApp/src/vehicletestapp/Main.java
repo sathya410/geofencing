@@ -4,16 +4,10 @@
  */
 package vehicletestapp;
 
-import de.micromata.opengis.kml.v_2_2_0.Coordinate;
-import de.micromata.opengis.kml.v_2_2_0.Kml;
-import de.micromata.opengis.kml.v_2_2_0.Placemark;
-import de.micromata.opengis.kml.v_2_2_0.Point;
 import fr.utbm.set.MobileCommunicator;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -50,7 +44,9 @@ public class Main {
                 String vitesse = splitarray[2];
                 String temps = splitarray[3];
 
-                communicator.sendMessage("GPS", -11, latitude + ";" + longitude);
+                communicator.sendMessage("GPS", -11, latitude + ";" + longitude + ";" + vitesse + ";" + temps);
+
+                System.currentTimeMillis();
 
                 Thread.sleep(1000);
             }
