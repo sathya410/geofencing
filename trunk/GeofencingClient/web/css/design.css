@@ -1,0 +1,266 @@
+body {
+    background: #FFFFFF;
+    font-family: Arial, sans-serif;
+    font-size:0.8em;
+}
+
+#global {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#header{
+    padding:20px;
+}
+
+#navigation {
+    background:url(images/header_bg.jpg) repeat-x;
+    height:35px;
+    padding:2px;
+}
+
+#navigation ul {
+    list-style: none;
+    padding: 5px;
+    margin: 0;
+}
+#navigation li.gauche {
+    float: left;
+    padding: 3px 0;
+    left:5px;
+    color:#2968a9;
+}
+
+#navigation a {
+    padding: 1px;
+    text-decoration: none;
+    color:#2968a9;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+#navigation a:hover {
+    text-decoration:underline;
+}
+
+#centre {
+    margin-top:10px;
+}
+
+#principal {
+    float: left;
+    width: 680px;
+    padding: 2px 2px;
+}
+
+#principal a {
+    color: #332510;
+}
+
+#map{
+    width:100%;
+    height:550px;
+    border:1px solid silver;
+}
+#toolBox {
+    padding-top: 8px;
+    background:url(images/map_bot_bg.jpg) repeat-x;
+    width:682px;
+}
+
+.btnToolBox {
+    display:block;
+}
+
+
+#toolBox ul {
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#toolBox li.gauche {
+    float: left;
+    margin-right: 15px;
+}
+#toolBox li.droite {
+    float: right;
+    margin-left: 10px;
+    padding: 3px 0;
+}
+
+#toolBox img:hover{
+    background: gray;
+}
+
+label.block{
+    margin-top:8px;
+    display:block;
+}
+
+label.inline{
+    display:inline;
+}
+
+.formBoxActions {
+    padding-top:8px;
+    padding-left:85px;
+}
+
+#geofenceList{
+    margin-top: 20px;
+}
+
+#secondaire {
+    width: 284px;
+    height: 571px;
+    margin-left: 694px;
+    padding: 12px 10px;
+    text-align: left;
+}
+
+#copyright {
+    margin-top:50px;
+    text-align: center;
+}
+
+.datePicker{
+    margin-top: 5px;
+}
+
+#divAddHour{
+    visibility: hidden;
+    position: absolute;
+    top:33%;
+    left: 33%;
+    border:1px solid;
+    width:600px;
+    height:385px;
+    background: #E4EAFB;
+}
+
+#moveBar{
+    background:url(images/map_bot_bg.jpg) repeat-x;
+    width: 100%;
+    margin-bottom: 10px;
+    position: absolute;
+}
+
+#moveBar img{
+    width:15px;
+    height:15px;
+    float: right;
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+#divdatepicker{
+    position: absolute;
+    left: 35%;
+    width: 150px;
+    top: 18px;
+}
+
+#addScheduleLeft{
+    position: absolute;
+    left: 0;
+    top: 55px;
+    width: 100px;
+}
+
+#addDTDLeft{
+    position: absolute;
+    left: 0;
+    top: 47px;
+    width: 100px;
+}
+
+#addDTDLeft input{
+    width: 80px;
+}
+
+#addDTLeft{
+    position: absolute;
+    left: 0;
+    top: 47px;
+    width: 100px;
+}
+
+#addDTLeft input{
+    width: 80px;
+}
+
+#addScheduleRight{
+    position: absolute;
+    top: 47px;
+    left: 100px;
+}
+
+#addDTDRight{
+    position: absolute;
+    top: 47px;
+    left: 100px;
+}
+
+#addDTRight{
+    position: absolute;
+    top: 47px;
+    left: 100px;
+}
+
+
+.topEightyPX{
+    margin-top: 88px;
+    display:block;
+}
+
+#saveDayHour{
+    position: absolute;
+    bottom: 10px;
+    left: 45%;
+}
+
+#btnDTDSaveHour{
+    position: absolute;
+    bottom: 10px;
+    left: 45%;
+}
+
+#btnDTSaveHour{
+    position: absolute;
+    bottom: 10px;
+    left: 45%;
+}
+
+#divDaysAndHoursInWeek{
+    visibility: hidden;
+}
+
+#divDateToDate{
+    visibility: hidden;
+}
+
+#divDatetime{
+    visibility: hidden;
+}
+
+#divDate{
+    visibility: hidden;
+    position: absolute;
+    left: 35%;
+    top: 110px;
+}
+
+#divdatepicker img:hover{
+    background: gray;
+}
+
+a {
+    color: #FF6533;
+}
+a:hover, a:focus {
+    color: #FF4C00;
+}
+strong {
+    color: #A1B55D;
+}
