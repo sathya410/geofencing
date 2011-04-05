@@ -234,3 +234,7 @@ INFO: LFA SENT TO : 1 AT : Thu Mar 31 14:28:46 CEST 2011
 INFO: EFA SENT TO : 1: AT : Thu Mar 31 14:42:20 CEST 2011
 31/03/2011 14:42:24 fr.utbm.set.server.GeofencingMessageHandler newMessage
 INFO: LFA SENT TO : 1 AT : Thu Mar 31 14:42:24 CEST 2011
+01/04/2011 23:15:46 fr.utbm.set.server.GeofencingMessageHandler newMessage
+INFO: EFA SENT TO : 1: AT : Fri Apr 01 23:15:46 CEST 2011
+01/04/2011 23:15:59 fr.utbm.set.server.GeofencingMessageHandler newMessage
+INFO: LFA SENT TO : 1 AT : Fri Apr 01 23:15:59 CEST 2011
