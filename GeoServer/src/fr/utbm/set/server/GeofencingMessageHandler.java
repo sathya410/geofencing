@@ -83,6 +83,16 @@ public class GeofencingMessageHandler implements MessageCallback{
                 Logger.getLogger("performanceGEO.log").info("LFA SENT TO : " + sender + " AT : " + new Date());
             }
 
+            if (enteredForb != null)
+            {
+                if (vitesse * 3.6 > enteredForb.getSpeedLimit())
+                {
+                    srv.getDao().addEvent(sender, enteredForb.getIdgeofence(), "SLE", new Date());
+                    srv.sendMsgToServerRelay("SLE", sender, (new Date()).toString());
+                    Logger.getLogger("performanceGEO.log").info("SLE SENT TO : " + sender + ": AT : " + new Date());
+                }
+            }
+
             //saving int the server the received position from the client
             srv.getPositionsContent().put(sender, receivedP);
         }
