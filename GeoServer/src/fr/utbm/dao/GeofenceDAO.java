@@ -30,8 +30,11 @@ public class GeofenceDAO {
     public boolean addEvent(int idvehicle, int idgeofencing, String event, Date date)
     {
         try {
-            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-            int rsResult = db.insert(new String[]{"idvehicle", "idgeofence", "event", "date"}, new String[]{Integer.toString(idvehicle), Integer.toString(idgeofencing), event, sqlDate.toString()}, "event");
+            java.util.Date dt = new java.util.Date();
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String currentTime = sdf.format(dt);
+
+            int rsResult = db.insert(new String[]{"idvehicle", "idgeofence", "event", "date"}, new String[]{Integer.toString(idvehicle), Integer.toString(idgeofencing), event, currentTime}, "event");
             if (rsResult == 0)
                 return false;
             else
