@@ -14,6 +14,7 @@ import fr.utbm.set.MessageCallback;
 import fr.utbm.set.ProtocolMessage;
 import fr.utbm.set.domain.Geofence;
 import fr.utbm.set.domain.Point;
+import fr.utbm.set.domain.Vehicle;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -44,9 +45,16 @@ public class GeofencingMessageHandler implements MessageCallback{
         if ( msg.getMessageType().equals("GPS") ){
             HashMap alreadyForbidden = srv.getVehicAlredyInForbArea();
             Geofence alreadyForb = null;
+            Vehicle vehicle;
             int sender = msg.getSenderId();
+            vehicle = (Vehicle)srv.getVehicles().get(sender);
 
-
+            if (vehicle == null)
+            {
+                vehicle = srv.getDao().selectVehicle(sender);
+                // TODO: verify that we obtained a vehicle from database. otherwise we'll have some errores trying to use the vehicle
+                srv.getVehicles().put(sender, vehicle);
+            }
 
             System.out.println("Received a GPS message from " + String.valueOf(sender) + " : at : " + new Date());
             
@@ -94,18 +102,18 @@ public class GeofencingMessageHandler implements MessageCallback{
                     Logger.getLogger("performanceGEO.log").info("SLE SENT TO : " + sender + ": AT : " + new Date());
                 }
 
-                if (vitesse * 3.6 > enteredForb.getSpeedLimit())
+                if (vehicle.getWeight() > enteredForb.getWeightMax())
                 {
-                    srv.getDao().addEvent(sender, enteredForb.getIdgeofence(), "SLE", new Date());
-                    srv.sendMsgToServerRelay("SLE", sender, (new Date()).toString());
-                    Logger.getLogger("performanceGEO.log").info("SLE SENT TO : " + sender + ": AT : " + new Date());
+                    srv.getDao().addEvent(sender, enteredForb.getIdgeofence(), "WME", new Date());
+                    srv.sendMsgToServerRelay("WME", sender, (new Date()).toString());
+                    Logger.getLogger("performanceGEO.log").info("WME SENT TO : " + sender + ": AT : " + new Date());
                 }
 
-                if (vitesse * 3.6 > enteredForb.getSpeedLimit())
+                if (vehicle.getHeight() > enteredForb.getHeightMax())
                 {
-                    srv.getDao().addEvent(sender, enteredForb.getIdgeofence(), "SLE", new Date());
-                    srv.sendMsgToServerRelay("SLE", sender, (new Date()).toString());
-                    Logger.getLogger("performanceGEO.log").info("SLE SENT TO : " + sender + ": AT : " + new Date());
+                    srv.getDao().addEvent(sender, enteredForb.getIdgeofence(), "HME", new Date());
+                    srv.sendMsgToServerRelay("HME", sender, (new Date()).toString());
+                    Logger.getLogger("performanceGEO.log").info("HME SENT TO : " + sender + ": AT : " + new Date());
                 }
             }
 

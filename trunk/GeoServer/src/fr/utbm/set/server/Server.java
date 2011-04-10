@@ -25,6 +25,7 @@ public class Server {
     private Hashtable clientsPosition;
     //contains true or false of the client was already in a forbidden area
     private HashMap alreadyInForbiddenArea;
+    private HashMap vehicles;
     private ArrayList<Geofence> allGeofences;
     //communication with the ServerRelay
     private MobileCommunicator communicator;
@@ -38,8 +39,13 @@ public class Server {
         serversocket = null;
         clientsPosition = new Hashtable();
         alreadyInForbiddenArea = new HashMap();
+        vehicles = new HashMap();
         allGeofences = new ArrayList<Geofence>();
         communicator = null;
+    }
+
+    public HashMap getVehicles() {
+        return vehicles;
     }
 
     /**
