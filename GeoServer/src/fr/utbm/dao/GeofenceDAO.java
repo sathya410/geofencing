@@ -151,6 +151,26 @@ public class GeofenceDAO {
         return geofence;
     }
 
+    public Vehicle selectVehicle(int idVehicle){
+        Vehicle vehicle = new Vehicle();
+        ResultSet rs;
+
+        try {
+            rs = db.executeQuery("SELECT * FROM vehicle WHERE vehicleID = " + idVehicle);
+            while(rs.next()){
+                vehicle.setHeight(rs.getDouble("height"));
+                vehicle.setIsTDG(rs.getBoolean("isTDG"));
+                vehicle.setTypeVehicle(TMLVehicleType.fromVehicleCode(String.valueOf(rs.getInt("vehicleTypeID"))));
+                vehicle.setSpeedLimit(rs.getInt("speedLimit"));
+                vehicle.setWeight(rs.getDouble("weight"));
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return vehicle;
+    }
+
      /**
      * Get all the known geofences
      * @return ArrayList<Geofence>
