@@ -64,6 +64,8 @@ public class GeofencingMessageHandler implements MessageCallback{
             double vitesse = Double.valueOf(tokens[2]);
             long temps = Long.valueOf(tokens[3]);
 
+            Long milliTime = Long.valueOf(tokens[4]);
+
             //the received position
             Point receivedP = new Point(latitude, longitude);
 
@@ -77,18 +79,18 @@ public class GeofencingMessageHandler implements MessageCallback{
             //if the client enters or leaves a forbidden area we
             //send a notification
             Geofence enteredForb = checkEnteredForbiddenArea(receivedP, msg);
-           
+
             if ( enteredForb != null && alreadyForb == null){
                 srv.getDao().addEvent(sender, enteredForb.getIdgeofence(), "EFA", new Date());
                 System.out.println("Client : " + sender +  " : ENTERED a forbidden area at :" + new Date());
-                srv.sendMsgToServerRelay("EFA", sender, (new Date()).toString());
+                srv.sendMsgToServerRelay("EFA", sender, (new Date()).toString() + ";" +milliTime.toString());
                 srv.changeForbidens(sender, enteredForb);
                 Logger.getLogger("performanceGEO.log").info("EFA SENT TO : " + sender + ": AT : " + new Date());
             }
             else if ( enteredForb == null && alreadyForb != null){
                 srv.getDao().addEvent(sender, alreadyForb.getIdgeofence(), "LFA", new Date());
                 System.out.println("Client : " + sender + " : OUT from a forbidden area at : " + new Date());
-                srv.sendMsgToServerRelay("LFA", sender, (new Date()).toString());
+                srv.sendMsgToServerRelay("LFA", sender, (new Date()).toString() + ";" +milliTime.toString());
                 srv.changeForbidens(sender, null);
                 Logger.getLogger("performanceGEO.log").info("LFA SENT TO : " + sender + " AT : " + new Date());
             }
