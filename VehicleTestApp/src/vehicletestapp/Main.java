@@ -44,7 +44,9 @@ public class Main {
                 String vitesse = splitarray[2];
                 String temps = splitarray[3];
 
-                communicator.sendMessage("GPS", -11, latitude + ";" + longitude + ";" + vitesse + ";" + temps);
+                Long milliTime = System.currentTimeMillis();
+
+                communicator.sendMessage("GPS", -11, latitude + ";" + longitude + ";" + vitesse + ";" + temps + ";" + milliTime.toString());
 
                 System.currentTimeMillis();
 
