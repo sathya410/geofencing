@@ -16,6 +16,13 @@ import fr.utbm.set.ProtocolMessage;
 public class MessageHandler implements MessageCallback {
 
      public void newMessage(ProtocolMessage msg) {
+
+         if (msg.getMessageType().matches("EFA")){
+             String[] tokens = msg.getMessage().trim().split(";");
+            Long milliTime = Long.valueOf(tokens[1]);
+            System.out.println("Delay : "+((double) (System.currentTimeMillis()-milliTime)/1000)+" seconds.");
+         }
+
         System.out.println("Received a message from "+String.valueOf(msg.getSenderId())+": "+msg.getMessageType() + ": "+msg.getMessage());
      }
 }
